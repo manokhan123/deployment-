@@ -1,5 +1,5 @@
 const dns = require("dns");
-
+const env = require('env')
 dns.setServers(["8.8.8.8", "8.8.4.4"]);
 const express = require("express");
 const mongoose = require("mongoose");
@@ -14,7 +14,7 @@ app.use(express.json());
 // MongoDB Connection
 mongoose
   .connect(
-    "mongodb+srv://manokhanasd123_db_user:ishefEjxzIyXNWvo@cluster0.skizj51.mongodb.net/?appName=Cluster0",
+   process.env.MONGODB_CONNECTION 
   )
   .then(() => {
     console.log("MongoDB Connected Successfully");
